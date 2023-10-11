@@ -32,13 +32,16 @@ RUN pipenv install
 # Switch to the non-privileged user to run the application.
 #USER appuser
 
-# Copy the source code into the container.
+
 COPY . .
 RUN pipenv install --system --deploy --ignore-pipfile
-# Expose the port that the application listens on.
+
+
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
 
 EXPOSE 8000
 
 # Run the application.
 #CMD gunicorn 'venv1.Lib.site-packages.fastapi.middleware.wsgi' --bind=0.0.0.0:8000
-CMD ["uvicorn", "main:app", "--reload"]
+CMD ["uvicorn", "src.main:app", "--reload"]
