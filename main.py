@@ -68,7 +68,7 @@ def update_item_partial(item_id: int, item_update: Item):
     items[item_id] = updated_item
     return {"message": f"Item {item_id} has been updated", "updated_item": updated_item}
 
-
-if __name__ == '__main__':
-    import uvicorn
-    uvicorn.run(app, host="localhost", port=8000)
+#
+# if __name__ == '__main__':
+#     import uvicorn
+#     uvicorn.run(app, host="localhost", port=8000)
